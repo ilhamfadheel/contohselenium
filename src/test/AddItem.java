@@ -35,19 +35,20 @@ public class AddItem {
     //BEfore each test
     @Before
     public void goToLoginPage(){
-        //Login first
+        //STEP 1: Login first
         loginPage.login("standard_user","secret_sauce");
     }
 
     @Test
     //Add Random Items to Cart test steps:
     //1. Login to SauceDemo
-    //2. Add 3 random items to cart, record the item name
+    //2. Add n random items to cart, record the item name
     //3. Open cart, record the item name
     //4. Compare item name in step 2 and step 3
     public void addRandomItemsToCart(){
+            //STEP 2: Add items to cart
             //Define the number of random items needs to be added to cart
-            int numberOfItem=6;
+            int numberOfItem=3;
 
             //Make sure if number of item is less than or equal to the total of items in Home Page
             int maxItems=homePage.getInventoryItemSize();
@@ -60,16 +61,16 @@ public class AddItem {
             //Add item to cart and record the name
             List<String> itemNamesInList=homePage.addItemsToCart(itemIndex);
 
-            //Open cart and record the item name in cart
+            //STEP 3: Open cart and record the item name in cart
             //Click Cart Icon
-            driver.findElement(homePage.cartIcon_loc).click();
+            homePage.openCart();
             //Assert that browser is in cart page
             cartPage.assertInCartPage();
             //Record the item name in cart
             List<String> itemNamesInCart=cartPage.getCartItemNames();
 
             //Task 2
-            //Check if items' name in cart are the same with the ones that were truly added
+            //STEP 4: Check if items' name in cart are the same with the ones that were truly added
             Assert.assertArrayEquals(itemNamesInList.toArray(),itemNamesInCart.toArray());
  
     }

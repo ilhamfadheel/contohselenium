@@ -72,4 +72,8 @@ public class HomePage {
         }
         return result;
     }
+
+    public void openCart(){
+        driver.findElement(cartIcon_loc).click();
+    }
 }
