@@ -59,7 +59,7 @@ public class AddItem {
 
             //Add item to cart and record the name
             List<String> itemNamesInList=homePage.addItemsToCart(itemIndex);
-            
+
             //Open cart and record the item name in cart
             //Click Cart Icon
             driver.findElement(homePage.cartIcon_loc).click();
@@ -68,7 +68,7 @@ public class AddItem {
             //Record the item name in cart
             List<String> itemNamesInCart=cartPage.getCartItemNames();
 
-
+            //Task 2
             //Check if items' name in cart are the same with the ones that were truly added
             Assert.assertArrayEquals(itemNamesInList.toArray(),itemNamesInCart.toArray());
  
